@@ -1,3 +1,44 @@
+<?php 
+require "../vendor/autoload.php";
+
+use Entity\User;
+use Entity\Recipe;
+
+
+$userToto = new User();
+$userToto->id = 1;
+$userToto->nickname = "toto";
+$userToto->password = "pwd1";
+$userToto->created_at = "10-05-2021";
+
+$recipe1 = new Recipe();
+$recipe1->id = 1;
+$recipe1->title = "Fraisier";
+$recipe1->preparation;
+$recipe1->content ="Cette recette de fraisier est rapide, facile, et surtout plus légère que certaines versions avec de la crème au beurre. Ici, c’est un mix de crème pâtissière à la vanille et de crème fouettée. J’utilise un peu d’agar agar (certains préféreront la gélatine), pour bien faire tenir ma garniture. Finalement c’est une recette qu’on pourrait décliner avec d’autres fruits, comme des abricots, des framboises, etc…";
+$recipe1->step1 = "Réalisez le sirop en faisant chauffer l'eau, le sucre et la gousse de vanille fendue. Portez à ébullition 2/3 minutes et laissez infuser. Vous pouvez également ajouter du kirsch, du sirop de fraise ou autre...
+Réalisez la crème en chauffant le lait avec la gousse de vanille fendue (ou l'extrait de vanille ou sucre vanillé, au choix :)
+Fouettez les jaunes avec le sucre, ajoutez la maizéna ensuite, progressivement
+Ajoutez l'agar agar dans le lait et laissez bouillir 1 minute";
+$recipe1->step2 = "Versez le lait bouillant dessus en une fois, mélangez et remettez sur le feu moyen, fouettez constamment, la crème pâtissière va s'épaissir
+Reversez la crème dans un bol propre, couvrez-la au contact avec du film alimentaire et laissez refroidir.
+Fouettez la crème liquide bien ferme (mettez-la au congélateur 15 minutes avant, ca aide !!)
+Ajoutez la crème fouettée à la crème pâtissière froide, délicatement, et mettez dans une poche à douille au frais.";
+$recipe1->step3 = "Réalisez la génoise à présent : séparez les blancs des jaunes et battez les blancs bien fermes
+Ajoutez un tiers du sucre aux blancs quand ils sont fermes, et battez encore 1 minute.
+Fouettez les jaunes avec le restant de sucre et la vanille
+Ajoutez le beurre fondu, puis la moitié de la farine tamisée
+Pour détendre la pâte, ajoutez 2 c. à soupe de blanc d'oeufs";
+$recipe1->recipe_img = "img/fraisier.jpg";
+$recipe1->cooktime = "60";
+$recipe1->servings = "8";
+$recipe1->creationDate = "10-05-2021";
+$recipe1->user = $userToto;
+
+$recipes = [$recipe1];
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,15 +84,18 @@
            
             <div class="cont_principal">
             <h1>Recette du jour</h1>
+     <?php 
+     foreach($recipes as $recipe){
+       ?>
 <div class="cont_central">
   <div class="cont_modal cont_modal_active">
   <div class="cont_photo">
 <div class="cont_img_back">
-    <img src="https://s-media-cache-ak0.pinimg.com/736x/57/98/9f/57989f2a2e186e38bf93429aa395120c.jpg" alt="" />
+    <img src="<?= $recipe->recipe_img ?>" alt="" />
     </div>
 <div class="cont_mins">
     <div class="sub_mins">
-  <h3>50</h3>
+  <h3><?= $recipe->cooktime?></h3>
 <span>MINS</span>
   </div>
   <div class="cont_icon_right">
@@ -63,7 +107,7 @@
 <span>SERVINGS</span>
     </div>
 <div class="cont_detalles">
-    <h3>Shakshuka With Feta</h3>
+    <h3><?= $recipe->title ?></h3>
 <p>orem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sagittis est est aliquam, sed faucibus massa lobortis. Maecenas non est justo.</p>
     </div>
     </div>
@@ -82,17 +126,15 @@
     <p>STEP 1</p>
     </div>
   <div class="cont_info_preparation">
-    <p>Heat oven to 375 degress</p>
+    <p><?= $recipe->step1 ?></p>
     </div>  
   <div class="cont_text_det_preparation">
-
   <div class="cont_title_preparation">
     <p>STEP 2</p>
     </div>
   <div class="cont_info_preparation">
-    <p>Heat oil in a large skillet over medium-low head. Add onion and bell papper. Cook gently until very soft, about 20 minutes. Add garlic and cook until tender, 1 to 2 minutes; stir in cumin, paprika and cook 1 minute. Pour in tomatoes and season with 3/4 teaspoon salt and 1/4 teaspoon pepper;</p>
-    </div> 
-  
+    <p><?= $recipe->step2 ?></p>
+    </div>  
   </div>
 </div>  
   <div class="cont_btn_mas_dets">
@@ -107,6 +149,10 @@
     </div>
    </div>
 </div>
+<?php 
+     }
+     ?>       
+
             
     </div>
     

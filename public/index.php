@@ -30,7 +30,7 @@ Ajoutez un tiers du sucre aux blancs quand ils sont fermes, et battez encore 1 m
 Fouettez les jaunes avec le restant de sucre et la vanille
 Ajoutez le beurre fondu, puis la moitié de la farine tamisée
 Pour détendre la pâte, ajoutez 2 c. à soupe de blanc d'oeufs";
-$recipe1->recipe_img = "img/fraisier1.jpg";
+$recipe1->recipe_img = "img/fraisiercake.jpg";
 $recipe1->cooktime = "60";
 $recipe1->servings = "8";
 $recipe1->creationDate = "10-05-2021";

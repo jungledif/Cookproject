@@ -14,8 +14,9 @@ $userToto->created_at = "10-05-2021";
 $recipe1 = new Recipe();
 $recipe1->id = 1;
 $recipe1->title = "Fraisier";
-$recipe1->preparation;
-$recipe1->content ="Cette recette de fraisier est rapide, facile, et surtout plus légère que certaines versions avec de la crème au beurre. Ici, c’est un mix de crème pâtissière à la vanille et de crème fouettée. J’utilise un peu d’agar agar (certains préféreront la gélatine), pour bien faire tenir ma garniture. Finalement c’est une recette qu’on pourrait décliner avec d’autres fruits, comme des abricots, des framboises, etc…";
+$recipe1->descriptive ="Cette recette de fraisier est rapide, facile, et surtout plus légère que certaines versions avec de la crème au beurre. Ici, c’est un mix de crème pâtissière à la vanille et de crème fouettée. J’utilise un peu d’agar agar (certains préféreront la gélatine), pour bien faire tenir ma garniture. Finalement c’est une recette qu’on pourrait décliner avec d’autres fruits, comme des abricots, des framboises, etc…";
+$recipe1->content ="";
+$recipe1->level = "Débutant";
 $recipe1->step1 = "Réalisez le sirop en faisant chauffer l'eau, le sucre et la gousse de vanille fendue. Portez à ébullition 2/3 minutes et laissez infuser. Vous pouvez également ajouter du kirsch, du sirop de fraise ou autre...
 Réalisez la crème en chauffant le lait avec la gousse de vanille fendue (ou l'extrait de vanille ou sucre vanillé, au choix :)
 Fouettez les jaunes avec le sucre, ajoutez la maizéna ensuite, progressivement
@@ -29,7 +30,7 @@ Ajoutez un tiers du sucre aux blancs quand ils sont fermes, et battez encore 1 m
 Fouettez les jaunes avec le restant de sucre et la vanille
 Ajoutez le beurre fondu, puis la moitié de la farine tamisée
 Pour détendre la pâte, ajoutez 2 c. à soupe de blanc d'oeufs";
-$recipe1->recipe_img = "img/fraisier.jpg";
+$recipe1->recipe_img = "img/fraisier1.jpg";
 $recipe1->cooktime = "60";
 $recipe1->servings = "8";
 $recipe1->creationDate = "10-05-2021";
@@ -47,7 +48,11 @@ $recipes = [$recipe1];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <link type="text/css" rel="stylesheet" href="css/style.css"
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+<!-- google fonts-->
+<link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
 </head>
 <nav class="nav">
         <div class="container">
@@ -81,80 +86,70 @@ $recipes = [$recipe1];
 			<p class="myP"></p>
 				<p class="myP">
 			</p>  -->
-           
-            <div class="cont_principal">
-            <h1>Recette du jour</h1>
-     <?php 
+        <br>   
+     <h1>Recette du jour</h1>
+    <section class="cards-post">
+    <?php 
      foreach($recipes as $recipe){
        ?>
-<div class="cont_central">
-  <div class="cont_modal cont_modal_active">
-  <div class="cont_photo">
-<div class="cont_img_back">
-    <img src="<?= $recipe->recipe_img ?>" alt="" />
+    <div id="card-wrapper<?= $recipe->id ?>">
+    <style>#card-wrapper<?= $recipe->id ?> {
+    background-image:url(<?= $recipe->recipe_img ?>);
+  background-size:cover;
+  background-repeat:no-repeat;
+
+  min-width:550px;
+  min-height:750px;
+  color:black;
+  box-shadow: 5px 5px 15px; 
+  font-family: 'Abril Fatface', cursive;
+  order:2;
+  margin-top:50px;}</style>
+    <div class="inner-card">
+    <!--top right btn-->
+    <div class="more-info-btn">
+      
     </div>
-<div class="cont_mins">
-    <div class="sub_mins">
-  <h3><?= $recipe->cooktime?></h3>
-<span>MINS</span>
-  </div>
-  <div class="cont_icon_right">
-<a href="#">  <i class="material-icons">&#xE8E7;</i></a>
-  </div>
-    </div>
-<div class="cont_servings">
-      <h3>4</h3>
-<span>SERVINGS</span>
-    </div>
-<div class="cont_detalles">
-    <h3><?= $recipe->title ?></h3>
-<p>orem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sagittis est est aliquam, sed faucibus massa lobortis. Maecenas non est justo.</p>
-    </div>
-    </div>
-<div class="cont_text_ingredients">
-<div class="cont_over_hidden">
- 
-  <div class="cont_tabs">
-  <ul>
-    <li><a href="#"><h4>INGREDIENTS</h4></a></li>
-    <li><a href="#"><h4>PREPARATION</h4></a></li>
-  </ul>  
-  </div>
-   
-  <div class="cont_text_det_preparation">
-  <div class="cont_title_preparation">
-    <p>STEP 1</p>
-    </div>
-  <div class="cont_info_preparation">
-    <p><?= $recipe->step1 ?></p>
-    </div>  
-  <div class="cont_text_det_preparation">
-  <div class="cont_title_preparation">
-    <p>STEP 2</p>
-    </div>
-  <div class="cont_info_preparation">
-    <p><?= $recipe->step2 ?></p>
-    </div>  
-  </div>
-</div>  
-  <div class="cont_btn_mas_dets">
-  <a href="#"><i class="material-icons">&#xE313;</i></a>
-  </div>
     
-  </div>
-  <div class="cont_btn_open_dets">
-  <a href="#e" onclick="open_close()"><i class="material-icons">&#xE314;</i></a>
-  </div>
-
+    <!--title-->
+    <div id="title">
+      <?= $recipe->title ?>
     </div>
-   </div>
-</div>
-<?php 
+    
+    <!--details-->
+    <div id="details">
+      
+    <div class="Details">
+      <h2>Niveau</h2>
+      <h4><?= $recipe->level?></h4>
+    </div>
+      
+    <div class="Details">
+      <h2>Temps</h2>
+      <h4><?= $recipe->cooktime?> minutes</h4>
+    </div>
+      
+    <div class="Details">
+      <h2>Couverts</h2>
+      <h4><?= $recipe->servings?></h4>
+    </div>
+      
+    </div>
+    
+   
+  </div>
+     <!--start btn-->
+    <div class="start-btn"><a href=""><h3>Voir la recette<i class="fas fa-long-arrow-alt-right"></i></h3> </a></div>
+  
+    </div>
+  
+
+    <?php 
      }
-     ?>       
+     ?>   
+</section>
 
-            
-    </div>
+    
     
 </body>
 <script src="js/script.js"></script>

@@ -5,8 +5,9 @@ class Recipe
 {
 public $id;
 public $title;
-public $preparation;
+public $descriptive;
 public $content;
+public $level;
 public $step1;
 public $step2;
 public $step3;

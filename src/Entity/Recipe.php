@@ -1,6 +1,8 @@
 <?php
 namespace Entity;
 use Entity\User;
+use ludk\Utils\Serializer;
+
 class Recipe
 {
 public $id;
@@ -16,4 +18,6 @@ public $cooktime;
 public $servings;
 public $creationDate;
 public User $user;
+
+use Serializer;
 }

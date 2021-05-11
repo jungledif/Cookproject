@@ -1,11 +1,17 @@
 <?php 
-require "../vendor/autoload.php";
 
 use Entity\User;
 use Entity\Recipe;
+use ludk\Persistence\ORM;
+require __DIR__ . '/../vendor/autoload.php';
+$userToto = new ORM(__DIR__ . '/../Resources');
+$recipe1 = new ORM(__DIR__ . '/../Resources');
+$userRepo = $userToto->getRepository(User::class);
+$recipeRepo = $recipe1->getRepository(Recipe::class);
+$users = $userRepo->findAll();
+$recipes = $recipeRepo->findAll();
 
-
-$userToto = new User();
+/*$userToto = new User();
 $userToto->id = 1;
 $userToto->nickname = "toto";
 $userToto->password = "pwd1";
@@ -36,7 +42,7 @@ $recipe1->servings = "8";
 $recipe1->creationDate = "10-05-2021";
 $recipe1->user = $userToto;
 
-$recipes = [$recipe1];
+$recipes = [$recipe1];*/
 
 
 ?>

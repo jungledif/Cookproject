@@ -15,7 +15,7 @@ include __DIR__ . "/header.php";
      
     <section class="cards-post">
     <?php 
-     foreach($recipes as $recipe){
+     foreach($items as $recipe){
        ?>
     <div id="card-wrapper<?= $recipe->id ?>">
     <style>#card-wrapper<?= $recipe->id ?> {
@@ -69,11 +69,13 @@ include __DIR__ . "/header.php";
     </div>
   
 
-    <?php 
-     }
-     ?>   
-</section>
+     
+     <?php
+           
+        }
+        ?>
 
+    </section>
     
     
 <?php

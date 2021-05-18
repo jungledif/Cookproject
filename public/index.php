@@ -75,30 +75,80 @@ case 'login':
     }
 break;
 case 'new':
+    $items = $recipeRepo->findAll();
+    if (
+        isset($_SESSION['user'])
+    && isset($_POST['title'])
+    && isset($_POST['descriptive'])
+    && isset($_POST['level'])
+    && isset($_POST['cooktime'])
+    && isset($_POST['servings'])
+    && isset($_POST['type'])
+    && isset($_POST['step1'])
+    && isset($_POST['step2'])
+    && isset($_POST['step3'])
+    && isset($_FILES['recipe_img'])
+   
+    ){
+        $errorMsg = NULL;
+        if (strlen(trim($_POST['title'])) <2){
+            $errorMsg = "Your title shoud have at least 2 characters.";
+        } else if (strlen(trim($_POST['descriptive'])) < 4) {
+            $errorMsg = "Your description should have at least 4 characters.";
+        } else if (strlen(trim($_POST['level'])) < 1){
+            $errorMsg = "at least 1 character.";
+        } else if (intval(trim($_POST['cooktime'])) < 1){
+            $errorMsg = "at least 1 character.";
+        } else if (intval(trim($_POST['serving'])) < 1){
+            $errorMsg = "at least 1 character.";
+        } else if (strlen(trim($_POST['type'])) < 4) {
+            $errorMsg = "Your type should have at least 4 characters.";
+        } else if (strlen(trim($_POST['step1'])) < 4) {
+            $errorMsg = "Your step 1 should have at least 4 characters.";
+        } else if (strlen(trim($_POST['step2'])) < 4) {
+            $errorMsg = "Your step 1 should have at least 4 characters.";
+        } else if (strlen(trim($_POST['step3'])) < 4) {
+            $errorMsg = "Your step 1 should have at least 4 characters.";
+        } else if (strlen(trim($_FILES['recipe_img'])) < 4) {
+            $errorMsg = "You need an image";
+        } 
+        if ($errorMsg) {
+            include "../templates/PostForm.php";
+        } else {
+            $recipe = $recipeRepo->find($_POST['id']);
+            $newRecipe = new Recipe();
+            $newRecipe->title = trim($_POST['title']);
+            $newRecipe->descriptive = trim($_POST['descriptive']);
+            $newRecipe->level = trim($_POST['level']);
+            $newRecipe->servings = trim($_POST['servings']);
+            $newRecipe->cooktime = trim($_POST['cooktime']);
+            $newRecipe->step1 = trim($_POST['step1']);
+            $newRecipe->step1 = trim($_POST['step1']);
+            $newRecipe->step2 = trim($_POST['step2']);
+            $newRecipe->step3 = trim($_POST['step3']);
+            $newRecipe->recipe_img = trim($_POST['recipe_img']);
+            $newRecipe->created_at = date("Y-m-d H:i:s");
+            $newRecipe->recipe = $recipe;
+            $newRecipe->user = $_SESSION['user'];
+            $manager->persist($newRecipe);
+            $manager->flush();
+            header('Location: ?action=display');
+        }
+    }else {
+
+        include "../templates/PostForm.php";
+    }
+        
+
+    
 break;
 case 'display': 
 default:
-    if (isset($_GET['search'])) {
-    $strToSearch = $_GET['search'];
-    if (strpos($strToSearch, "@") === 0) {
-    $userName = substr($strToSearch, 1);
-    $userRepo = $orm->getRepository(User::class);
-    $users = $userRepo->findBy(array("nickname" => $userName));
-    if (count($users) == 1) {
-    $items = $userRepo->findBy(array("user" => $users[0]->id));
-    }
-    } else {
-    $items = $recipeRepo->findBy(array("content" => "%$strToSearch%"));
-    }
-    } else {
-    $items = $recipeRepo->findAll();
-    }
-    if(isset($_GET["search"])){
-        $recipes = $recipeRepo->findBy(
-            array("desc" => "%" . $_GET["search"] . "%")
-        );
+  if (isset($_GET['search'])) {
+            $items = $recipeRepo->findBy(array("title" => '%' . $_GET['search'] . '%'));
+        
     } else{
-        $recipes = $recipeRepo->findAll();
+        $items = $recipeRepo->findAll();
     }
  include '../templates/display.php';
 break;

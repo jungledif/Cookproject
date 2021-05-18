@@ -3,7 +3,7 @@
         "id" : 1,
 "title" : "Fraisier",
 "descriptive" : "Cette recette de fraisier est rapide, facile, et surtout plus légère que certaines versions avec de la crème au beurre. Ici, c’est un mix de crème pâtissière à la vanille et de crème fouettée. J’utilise un peu d’agar agar (certains préféreront la gélatine), pour bien faire tenir ma garniture. Finalement c’est une recette qu’on pourrait décliner avec d’autres fruits, comme des abricots, des framboises, etc…",
-"content" :"",
+"type" :"Pâtisserie",
 "level" : "Débutant",
 "step1" : "Réalisez le sirop en faisant chauffer l'eau, le sucre et la gousse de vanille fendue. Portez à ébullition 2/3 minutes et laissez infuser. Vous pouvez également ajouter du kirsch, du sirop de fraise ou autre... Réalisez la crème en chauffant le lait avec la gousse de vanille fendue (ou l'extrait de vanille ou sucre vanillé, au choix :) Fouettez les jaunes avec le sucre, ajoutez la maizéna ensuite, progressivement Ajoutez l'agar agar dans le lait et laissez bouillir 1 minute",
 "step2" : "Versez le lait bouillant dessus en une fois, mélangez et remettez sur le feu moyen, fouettez constamment, la crème pâtissière va s'épaissir. Reversez la crème dans un bol propre, couvrez-la au contact avec du film alimentaire et laissez refroidir. Fouettez la crème liquide bien ferme (mettez-la au congélateur 15 minutes avant, ça aide !!). Ajoutez la crème fouettée à la crème pâtissière froide, délicatement, et mettez dans une poche à douille au frais.",
@@ -13,5 +13,38 @@
 "servings" : "8",
 "creationDate" : "10-05-2021",
 "user" : 1
+    },
+    
+    {
+    "id" : 2,
+    "title" : "Cake",
+    "descriptive" : "Cette recette de fraisier est rapide, facile, et surtout plus légère que certaines versions avec de la crème au beurre. Ici, c’est un mix de crème pâtissière à la vanille et de crème fouettée. J’utilise un peu d’agar agar (certains préféreront la gélatine), pour bien faire tenir ma garniture. Finalement c’est une recette qu’on pourrait décliner avec d’autres fruits, comme des abricots, des framboises, etc…",
+    "type" :"Pâtisserie",
+    "level" : "Débutant",
+    "step1" : "Réalisez le sirop en faisant chauffer l'eau, le sucre et la gousse de vanille fendue. Portez à ébullition 2/3 minutes et laissez infuser. Vous pouvez également ajouter du kirsch, du sirop de fraise ou autre... Réalisez la crème en chauffant le lait avec la gousse de vanille fendue (ou l'extrait de vanille ou sucre vanillé, au choix :) Fouettez les jaunes avec le sucre, ajoutez la maizéna ensuite, progressivement Ajoutez l'agar agar dans le lait et laissez bouillir 1 minute",
+    "step2" : "Versez le lait bouillant dessus en une fois, mélangez et remettez sur le feu moyen, fouettez constamment, la crème pâtissière va s'épaissir. Reversez la crème dans un bol propre, couvrez-la au contact avec du film alimentaire et laissez refroidir. Fouettez la crème liquide bien ferme (mettez-la au congélateur 15 minutes avant, ça aide !!). Ajoutez la crème fouettée à la crème pâtissière froide, délicatement, et mettez dans une poche à douille au frais.",
+    "step3" : "Réalisez la génoise à présent : séparez les blancs des jaunes et battez les blancs bien fermes. Ajoutez un tiers du sucre aux blancs quand ils sont fermes, et battez encore 1 minute. Fouettez les jaunes avec le restant de sucre et la vanille. Ajoutez le beurre fondu, puis la moitié de la farine tamisée. Pour détendre la pâte, ajoutez 2 c. à soupe de blanc d'oeufs",
+    "recipe_img" : "img/fraisiercake.jpg",
+    "cooktime" : "60",
+    "servings" : "8",
+    "creationDate" : "10-05-2021",
+    "user" : 1
+    }
+    ,
+    
+    {
+    "id" : 3,
+    "title" : "Cake",
+    "descriptive" : "Cette recette de fraisier est rapide, facile, et surtout plus légère que certaines versions avec de la crème au beurre. Ici, c’est un mix de crème pâtissière à la vanille et de crème fouettée. J’utilise un peu d’agar agar (certains préféreront la gélatine), pour bien faire tenir ma garniture. Finalement c’est une recette qu’on pourrait décliner avec d’autres fruits, comme des abricots, des framboises, etc…",
+    "type" :"Pâtisserie",
+    "level" : "Débutant",
+    "step1" : "Réalisez le sirop en faisant chauffer l'eau, le sucre et la gousse de vanille fendue. Portez à ébullition 2/3 minutes et laissez infuser. Vous pouvez également ajouter du kirsch, du sirop de fraise ou autre... Réalisez la crème en chauffant le lait avec la gousse de vanille fendue (ou l'extrait de vanille ou sucre vanillé, au choix :) Fouettez les jaunes avec le sucre, ajoutez la maizéna ensuite, progressivement Ajoutez l'agar agar dans le lait et laissez bouillir 1 minute",
+    "step2" : "Versez le lait bouillant dessus en une fois, mélangez et remettez sur le feu moyen, fouettez constamment, la crème pâtissière va s'épaissir. Reversez la crème dans un bol propre, couvrez-la au contact avec du film alimentaire et laissez refroidir. Fouettez la crème liquide bien ferme (mettez-la au congélateur 15 minutes avant, ça aide !!). Ajoutez la crème fouettée à la crème pâtissière froide, délicatement, et mettez dans une poche à douille au frais.",
+    "step3" : "Réalisez la génoise à présent : séparez les blancs des jaunes et battez les blancs bien fermes. Ajoutez un tiers du sucre aux blancs quand ils sont fermes, et battez encore 1 minute. Fouettez les jaunes avec le restant de sucre et la vanille. Ajoutez le beurre fondu, puis la moitié de la farine tamisée. Pour détendre la pâte, ajoutez 2 c. à soupe de blanc d'oeufs",
+    "recipe_img" : "img/fraisiercake.jpg",
+    "cooktime" : "60",
+    "servings" : "8",
+    "creationDate" : "10-05-2021",
+    "user" : 1
     }
 ]

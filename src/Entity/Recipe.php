@@ -8,7 +8,7 @@ class Recipe
 public $id;
 public $title;
 public $descriptive;
-public $content;
+public $type;
 public $level;
 public $step1;
 public $step2;

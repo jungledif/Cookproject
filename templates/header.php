@@ -26,12 +26,12 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-5">
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="#">A propos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Recettes</a>
+          <a class="nav-link" href="?action=new">Recettes</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
@@ -39,13 +39,13 @@
         <?php 
         if (isset($_SESSION['user'])){
         ?>
-        <li class="nav-item">
+        <li class="ms-5 nav-item">
           <a class="nav-link" href="?action=logout">Déconnexion</a>
         </li>
         <?php 
         } else{
         ?>
-        <li class="nav-item">
+        <li class="ms-5 nav-item">
           <a class="nav-link" href="?action=login">Connexion</a>
         </li>
         
@@ -57,7 +57,7 @@
         ?>
       </ul>
       <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search">
+        <input class="form-control me-2" type="search" placeholder="Rechercher" name="search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
       </form>
     </div>

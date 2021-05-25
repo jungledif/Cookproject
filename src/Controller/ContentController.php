@@ -52,7 +52,7 @@ class ContentController extends AbstractController
                 $errorMsg = "You need an image";
             } 
             if ($errorMsg) {
-                include "../templates/PostForm.php";
+                return $this->render("PostForm.php");
             } else {
                 
                 $newRecipe = new Recipe();
@@ -77,7 +77,7 @@ class ContentController extends AbstractController
             }
         }else {
     
-            include "../templates/PostForm.php";
+            return $this->render("PostForm.php");
         }
             
     

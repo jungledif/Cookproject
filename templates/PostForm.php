@@ -1,7 +1,4 @@
-<?php
-include __DIR__ . "/header.php";
-?>
-
+{% include '/header.php' %}
     <form method="POST" action="/new" class="row g-3 col-sm-9 col-md-7 col-lg-8 mx-auto">
    
     <?php
@@ -64,6 +61,4 @@ include __DIR__ . "/header.php";
     
 </form>
  
-<?php
-include __DIR__ . "/footer.php";
-?>
+{% include '/footer.php' %}

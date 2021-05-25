@@ -77,6 +77,7 @@ case 'login':
     }
 break;
 case 'new':
+    
     $items = $recipeRepo->findAll();
     if (
         isset($_SESSION['user'])
@@ -89,9 +90,10 @@ case 'new':
     && isset($_POST['step1'])
     && isset($_POST['step2'])
     && isset($_POST['step3'])
-    && isset($_FILES['recipe_img'])
+    && isset($_POST['recipe_img'])
    
     ){
+        
         $errorMsg = NULL;
         if (strlen(trim($_POST['title'])) <2){
             $errorMsg = "Your title shoud have at least 2 characters.";
@@ -101,7 +103,7 @@ case 'new':
             $errorMsg = "at least 1 character.";
         } else if (intval(trim($_POST['cooktime'])) < 1){
             $errorMsg = "at least 1 character.";
-        } else if (intval(trim($_POST['serving'])) < 1){
+        } else if (intval(trim($_POST['servings'])) < 1){
             $errorMsg = "at least 1 character.";
         } else if (strlen(trim($_POST['type'])) < 4) {
             $errorMsg = "Your type should have at least 4 characters.";
@@ -111,13 +113,13 @@ case 'new':
             $errorMsg = "Your step 1 should have at least 4 characters.";
         } else if (strlen(trim($_POST['step3'])) < 4) {
             $errorMsg = "Your step 1 should have at least 4 characters.";
-        } else if (strlen(trim($_FILES['recipe_img'])) < 4) {
+        } else if (strlen(trim($_POST['recipe_img'])) < 4) {
             $errorMsg = "You need an image";
         } 
         if ($errorMsg) {
             include "../templates/PostForm.php";
         } else {
-            $recipe = $recipeRepo->find($_POST['id']);
+            // $recipe = $recipeRepo->find($_POST['id']);
             $newRecipe = new Recipe();
             $newRecipe->title = trim($_POST['title']);
             $newRecipe->descriptive = trim($_POST['descriptive']);
@@ -129,8 +131,8 @@ case 'new':
             $newRecipe->step2 = trim($_POST['step2']);
             $newRecipe->step3 = trim($_POST['step3']);
             $newRecipe->recipe_img = trim($_POST['recipe_img']);
-            $newRecipe->created_at = date("Y-m-d H:i:s");
-            $newRecipe->recipe = $recipe;
+            $newRecipe->creationDate = date("Y-m-d H:i:s");
+            // $newRecipe->recipe = $recipe;
             $newRecipe->user = $_SESSION['user'];
             $manager->persist($newRecipe);
             $manager->flush();

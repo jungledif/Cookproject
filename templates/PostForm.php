@@ -2,7 +2,7 @@
 include __DIR__ . "/header.php";
 ?>
 
-    <form class="row g-3 col-sm-9 col-md-7 col-lg-8 mx-auto">
+    <form method="POST" action="?action=new" class="row g-3 col-sm-9 col-md-7 col-lg-8 mx-auto">
  
     <h1 class="text-center">Postez votre nouvelle recette</h1>
     <div class="col-md-8 mb-3">
@@ -51,7 +51,7 @@ include __DIR__ . "/header.php";
 </div>
             <div class="mb-3">
   <label for="formFileSm" class="form-label">Photo de la recette</label>
-  <input class="form-control form-control-sm" id="formFileSm" type="file" name="recipe_img">
+  <input class="form-control form-control-sm" id="formFileSm" type="text" name="recipe_img">
 </div>
             
         <button type="submit" class="btn btn-primary mb-5">Postez</button>

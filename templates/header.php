@@ -31,7 +31,7 @@
           <a class="nav-link" aria-current="page" href="#">A propos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="?action=new">Recettes</a>
+          <a class="nav-link" href="new" action="/new">Recettes</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
@@ -40,17 +40,17 @@
         if (isset($_SESSION['user'])){
         ?>
         <li class="ms-5 nav-item">
-          <a class="nav-link" href="?action=logout">Déconnexion</a>
+          <a class="nav-link" href="logout" action="/logout">Déconnexion</a>
         </li>
         <?php 
         } else{
         ?>
         <li class="ms-5 nav-item">
-          <a class="nav-link" href="?action=login">Connexion</a>
+          <a class="nav-link" href="/login" action="/login">Connexion</a>
         </li>
         
          <li class="nav-item">
-          <a class="nav-link" href="?action=register">S'inscrire</a>
+          <a class="nav-link" href="register" action="/register">S'inscrire</a>
         </li>
         <?php 
         }

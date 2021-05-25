@@ -7,7 +7,7 @@ include __DIR__ . "/header.php";
     <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
     <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
     <div class="login-form">
-      <div class="sign-in-htm"  method="POST" action="?action=login">
+      <div class="sign-in-htm"  method="POST" action="/login">
       <?php
             if (isset($errorMsg)) {
                 echo "<div class='alert alert-warning' role='alert'>$errorMsg</div>";

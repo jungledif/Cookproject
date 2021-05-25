@@ -2,10 +2,16 @@
 include __DIR__ . "/header.php";
 ?>
 
-    <form method="POST" action="?action=new" class="row g-3 col-sm-9 col-md-7 col-lg-8 mx-auto">
- 
+    <form method="POST" action="/new" class="row g-3 col-sm-9 col-md-7 col-lg-8 mx-auto">
+   
+    <?php
+            if (isset($errorMsg)) {
+                echo "<div class='alert alert-warning' role='alert'>$errorMsg</div>";
+            }
+            ?>
     <h1 class="text-center">Postez votre nouvelle recette</h1>
     <div class="col-md-8 mb-3">
+  
       <label for="recipeName" class="form-label">Nom de la recette</label>
       <input type="text" id="recipeName" class="form-control" placeholder="Nom de la recette" name="title" required="">
     </div>

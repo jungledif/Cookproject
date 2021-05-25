@@ -2,21 +2,31 @@
 
 namespace Controller;
 
-class HomeController
-{
-    public function display(){
-        global $userRepo;
-        global $recipeRepo;
-        global $items;
+use Entity\Recipe;
+use Entity\User;
+use ludk\Controller\AbstractController;
+use ludk\Http\Request;
+use ludk\Http\Response;
 
-        if (isset($_GET['search'])) {
+class HomeController extends AbstractController
+{
+    public function display(Request $request): Response
+    {
+         $userRepo = $this->getOrm()->getRepository(User::class);
+         $recipeRepo = $this->getOrm()->getRepository(Recipe::class);
+        
+
+         if ($request->query->has('search')) {
             $items = $recipeRepo->findBy(array("title" => '%' . $_GET['search'] . '%'));
         
     } else{
         $items = $recipeRepo->findAll();
     }
- include '../templates/display.php';
-
+ $data = array(
+     "items" => $items
+ );
+ 
+return $this->render("display.php", $data);
 
     }
 }

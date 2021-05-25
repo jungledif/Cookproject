@@ -1,6 +1,4 @@
-<?php 
-include __DIR__ . "/header.php";
-?>
+{% include '/header.php' %}
     
 </head>
 
@@ -78,6 +76,4 @@ include __DIR__ . "/header.php";
     </section>
     
     
-<?php
-include __DIR__ . "/footer.php";
-?>
+    {% include '/footer.php' %}

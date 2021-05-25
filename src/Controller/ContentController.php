@@ -1,53 +1,54 @@
 <?php 
 namespace Controller;
 use Entity\Recipe;
+use ludk\Controller\AbstractController;
+use ludk\Http\Request;
+use ludk\Http\Response;
 
-
-class ContentController
+class ContentController extends AbstractController
 {
-    public function create()
+    public function create(Request $request): Response
     {
-        global $recipeRepo;
-        global $items;
-        global $manager;
+        $recipeRepo = $this->getOrm()->getRepository(Recipe::class);
+        $manager  = $this->getOrm()->getManager();
                
 
         $items = $recipeRepo->findAll();
         if (
-            isset($_SESSION['user'])
-        && isset($_POST['title'])
-        && isset($_POST['descriptive'])
-        && isset($_POST['level'])
-        && isset($_POST['cooktime'])
-        && isset($_POST['servings'])
-        && isset($_POST['type'])
-        && isset($_POST['step1'])
-        && isset($_POST['step2'])
-        && isset($_POST['step3'])
-        && isset($_POST['recipe_img'])
+            $request->getSession()->get('user')
+        && $request->request->get('title')
+        && $request->request->get('descriptive')
+        && $request->request->get('level')
+        && $request->request->get('cooktime')
+        && $request->request->get('servings')
+        && $request->request->get('type')
+        && $request->request->get('step1')
+        && $request->request->get('step2')
+        && $request->request->get('step3')
+        && $request->request->get('recipe_img')
        
         ){
             
-            $errorMsg = "";
-            if (strlen(trim($_POST['title'])) <2){
+            $errorMsg = NULL;
+            if (strlen($request->request->get('title')) <2){
                 $errorMsg = "Your title shoud have at least 2 characters.";
-            } else if (strlen(trim($_POST['descriptive'])) < 4) {
+            } else if (strlen($request->request->get('descriptive')) < 4) {
                 $errorMsg = "Your description should have at least 4 characters.";
-            } else if (strlen(trim($_POST['level'])) < 1){
+            } else if (strlen($request->request->get('level')) < 1){
                 $errorMsg = "at least 1 character.";
-            } else if (intval(trim($_POST['cooktime'])) < 1){
+            } else if (intval($request->request->get('cooktime')) < 1){
                 $errorMsg = "at least 1 character.";
-            } else if (intval(trim($_POST['servings'])) < 1){
+            } else if (intval($request->request->get('servings')) < 1){
                 $errorMsg = "at least 1 character.";
-            } else if (strlen(trim($_POST['type'])) < 4) {
+            } else if (strlen($request->request->get('type')) < 4) {
                 $errorMsg = "Your type should have at least 4 characters.";
-            } else if (strlen(trim($_POST['step1'])) < 4) {
+            } else if (strlen($request->request->get('step1')) < 4) {
                 $errorMsg = "Your step 1 should have at least 4 characters.";
-            } else if (strlen(trim($_POST['step2'])) < 4) {
+            } else if (strlen($request->request->get('step2')) < 4) {
                 $errorMsg = "Your step 1 should have at least 4 characters.";
-            } else if (strlen(trim($_POST['step3'])) < 4) {
+            } else if (strlen($request->request->get('step3')) < 4) {
                 $errorMsg = "Your step 1 should have at least 4 characters.";
-            } else if (strlen(trim($_POST['recipe_img'])) < 4) {
+            } else if (strlen($request->request->get('recipe_img')) < 4) {
                 $errorMsg = "You need an image";
             } 
             if ($errorMsg) {
@@ -55,22 +56,24 @@ class ContentController
             } else {
                 
                 $newRecipe = new Recipe();
-                $newRecipe->title = trim($_POST['title']);
-                $newRecipe->descriptive = trim($_POST['descriptive']);
-                $newRecipe->level = trim($_POST['level']);
-                $newRecipe->servings = trim($_POST['servings']);
-                $newRecipe->cooktime = trim($_POST['cooktime']);
-                $newRecipe->step1 = trim($_POST['step1']);
-                $newRecipe->step1 = trim($_POST['step1']);
-                $newRecipe->step2 = trim($_POST['step2']);
-                $newRecipe->step3 = trim($_POST['step3']);
-                $newRecipe->recipe_img = trim($_POST['recipe_img']);
+               
+                $newRecipe->title = $request->request->get('title');
+                $newRecipe->descriptive = $request->request->get('descriptive');
+                $newRecipe->level = $request->request->get('level');
+                $newRecipe->servings = $request->request->get('servings');
+                $newRecipe->cooktime = $request->request->get('cooktime');
+                $newRecipe->type = $request->request->get('type');
+                $newRecipe->step1 = $request->request->get('step1');
+                $newRecipe->step2 = $request->request->get('step2');
+                $newRecipe->step3 = $request->request->get('step3');
+                $newRecipe->recipe_img = $request->request->get('recipe_img');
                 $newRecipe->creationDate = date("Y-m-d H:i:s");
                 
-                $newRecipe->user = $_SESSION['user'];
+                $newRecipe->user = $request->getSession()->get('user');
                 $manager->persist($newRecipe);
                 $manager->flush();
-                header('Location:/display');
+                return
+                $this->redirectToRoute("display");
             }
         }else {
     

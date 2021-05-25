@@ -3,6 +3,8 @@
 use Entity\User;
 use Entity\Recipe;
 use ludk\Persistence\ORM;
+use Controller\HomeController;
+
 require __DIR__ . '/../vendor/autoload.php';
 
 
@@ -144,13 +146,8 @@ case 'new':
 break;
 case 'display': 
 default:
-  if (isset($_GET['search'])) {
-            $items = $recipeRepo->findBy(array("title" => '%' . $_GET['search'] . '%'));
-        
-    } else{
-        $items = $recipeRepo->findAll();
-    }
- include '../templates/display.php';
+ $controller = new HomeController();
+ $controller->display();
 break;
 }
 ?>
